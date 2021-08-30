@@ -11,7 +11,6 @@ const api_key = config.TMDB_KEY
 const poster_base_url = config.TMDB_IMG_URL
 
 movieRouter.get('/:id', async(req, res, next) => {
-    console.log("node_env ", process.env.NODE_ENV)
     try {
         const response = await axiosInstance.get(`/movie/${req.params.id}?api_key=${api_key}`)
         const movie = response.data
