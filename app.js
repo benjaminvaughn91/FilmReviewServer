@@ -16,4 +16,11 @@ app.use('/api/movie', movieRouter)
 app.use('/api/list', listRouter)
 app.use('/api/review', reviewRouter)
 
+app.get("*", (req, res) => {
+    let url = path.join(__dirname, '/build', 'index.html');
+    if (!url.startsWith('/app/')) // since we're on local windows
+      url = url.substring(1);
+    res.sendFile(url);
+  });
+
 module.exports = app
