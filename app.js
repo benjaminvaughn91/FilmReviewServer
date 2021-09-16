@@ -18,7 +18,7 @@ app.use('/api/list', listRouter)
 app.use('/api/review', reviewRouter)
 
 app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, '/build', 'index.html'));
-});
+	response.sendFile(path.join(__dirname, '/build', 'index.html'))
+})
 
 module.exports = app
