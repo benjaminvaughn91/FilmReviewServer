@@ -8,11 +8,20 @@ const axiosInstance = axios.create({
 });
 
 const api_key = config.TMDB_KEY
+const poster_base_url = config.TMDB_IMG_URL
 
 listRouter.get('/sorted', async(req, res, next) => {
     try {        
         const response = await axiosInstance.get(`/discover/movie?api_key=${api_key}&sort_by=${req.query.sort_by}`)
-        res.json(response.data)
+        let movies = []
+        response.data.results.forEach(movie => {
+            movies.push({
+                id: movie.id,
+                original_title: movie.original_title,
+                poster_path: poster_base_url + movie.poster_path
+            })
+        })
+        res.send(movies)
     } catch (error) {
         res.status(400).send('List request failed')
     }
@@ -21,7 +30,15 @@ listRouter.get('/sorted', async(req, res, next) => {
 listRouter.get('/year', async(req, res, next) => {
     try {        
         const response = await axiosInstance.get(`/discover/movie?api_key=${api_key}&primary_release_year=${req.query.year}`)
-        res.json(response.data)
+        let movies = []
+        response.data.results.forEach(movie => {
+            movies.push({
+                id: movie.id,
+                original_title: movie.original_title,
+                poster_path: poster_base_url + movie.poster_path
+            })
+        })
+        res.send(movies)
     } catch (error) {
         res.status(400).send('List request failed')
     }
