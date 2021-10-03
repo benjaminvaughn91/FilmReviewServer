@@ -22,7 +22,7 @@ movieRouter.get('/:id', async(req, res, next) => {
             'poster_path': poster_base_url + movie.poster_path
         })
     } catch (error) {
-        res.status(400).send('Movie request failed')
+        res.status(400).send('Movie request failed.')
     }
 })
 
@@ -31,7 +31,7 @@ movieRouter.get('/:id/credits', async(req, res, next) => {
         const response = await axiosInstance.get(`/movie/${req.params.id}/credits?api_key=${api_key}`)
         res.json(response.data)
     } catch (error) {
-        res.status(400).send('Credits request failed')
+        res.status(400).send('Credits request failed.')
     }
 })
 
