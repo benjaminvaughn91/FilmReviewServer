@@ -2,14 +2,12 @@ const reviewRouter = require('express').Router()
 const Review = require('../models/Review')
     
 reviewRouter.get('/', (request, response) => {
-
     Review.find({}).then(reviews => { 
         response.json(reviews)
       })
 })
 
 reviewRouter.get('/:id', (request, response) => {
-    
     Review.findById(request.params.id).then(review => { 
         response.json(review)
     })

@@ -5,7 +5,7 @@ const config = require('../config')
 const axiosInstance = axios.create({
     baseURL: config.TMDB_BASE_URL,
     headers: { 'Content-Type' : 'application/json;charset=utf-8'}
-});
+})
 
 const api_key = config.TMDB_KEY
 const poster_base_url = config.TMDB_IMG_URL

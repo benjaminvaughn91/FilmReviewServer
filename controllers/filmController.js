@@ -5,7 +5,7 @@ const config = require('../config')
 const axiosInstance = axios.create({
     baseURL: config.TMDB_BASE_URL,
     headers: {'Content-Type' : 'application/json;charset=utf-8'}
-});
+})
 
 const api_key = config.TMDB_KEY
 const poster_base_url = config.TMDB_IMG_URL
@@ -16,11 +16,10 @@ movieRouter.get('/:id', async(req, res, next) => {
         const movie = response.data
         res.json({
             'title': movie.title,
-            'release_date': movie.release_date,
+            'year': movie.release_date.substr(0,4),
             'tagline': movie.tagline,
             'overview': movie.overview,
-            'poster_base': poster_base_url,
-            'poster_path': movie.poster_path
+            'poster_path': poster_base_url + movie.poster_path
         })
     } catch (error) {
         res.status(400).send('Movie request failed')
