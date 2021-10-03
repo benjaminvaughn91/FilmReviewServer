@@ -17,7 +17,7 @@ reviewRouter.post('/', (request, response) => {
     const body = request.body
 
     if (body.content === undefined || body.author === undefined) {
-        return response.status(400).json({ error: 'author or content missing' })
+        return response.status(400).json({ error: 'Author or content missing' })
     }
   
     const review = new Review({
