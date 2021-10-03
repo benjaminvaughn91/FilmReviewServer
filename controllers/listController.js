@@ -23,7 +23,7 @@ listRouter.get('/sorted', async(req, res, next) => {
         })
         res.send(movies)
     } catch (error) {
-        res.status(400).send('List request failed')
+        res.status(400).send('Sorted list request failed')
     }
 })          
 
@@ -40,7 +40,7 @@ listRouter.get('/year', async(req, res, next) => {
         })
         res.send(movies)
     } catch (error) {
-        res.status(400).send('List request failed')
+        res.status(400).send('Year list request failed')
     }
 })   
 

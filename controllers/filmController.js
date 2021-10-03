@@ -23,7 +23,7 @@ movieRouter.get('/:id', async(req, res, next) => {
             'poster_path': movie.poster_path
         })
     } catch (error) {
-        res.status(400).send('Film request failed')
+        res.status(400).send('Movie request failed')
     }
 })
 
